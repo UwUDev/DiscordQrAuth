@@ -46,6 +46,9 @@ public class DiscordQrAuth {
     }
 
     public String awaitToken() {
+        if (token != null)
+            return token;
+
         while (System.currentTimeMillis() < socket.getTimeout() && socket.getTempToken() == null) {
             try {
                 //noinspection BusyWait
